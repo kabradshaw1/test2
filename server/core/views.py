@@ -1,3 +1,9 @@
-from django.shortcuts import render
+from rest_framework import viewsets
+from core.models import Menu
+from core.serializers import MenuSerializer
 
-# Create your views here.
+class MenuViewSet(viewsets.ModelViewSet):
+    serializer_class = MenuSerializer
+
+    def get_queryset(self):
+        return Menu.objects.all()
